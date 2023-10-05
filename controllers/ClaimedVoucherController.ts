@@ -21,7 +21,11 @@ class ClaimedVoucherController {
     next: NextFunction
   ) {
     try {
-      const data = await ClaimedVoucher.addClaimedVoucher(req.body);
+      let theParsed;
+      for (let key in req.body) {
+        theParsed = JSON.parse(key);
+      }
+      const data = await ClaimedVoucher.addClaimedVoucher(theParsed);
       return res.json(data?.rows ?? []);
     } catch (e) {
       console.log(e);
