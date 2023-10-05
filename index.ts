@@ -11,10 +11,12 @@ const port = process.env.PORT || 8000;
 
 app.use(
   cors<Request>({
-    origin: `http://localhost:3000`,
+    origin: process.env.CORS_ORIGIN,
     optionsSuccessStatus: 200,
   })
 );
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 app.use(router);
 
 app.listen(port, () => {

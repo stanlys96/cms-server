@@ -14,6 +14,45 @@ class CategoryController {
       console.log(e);
     }
   }
+
+  public static async addCategory(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
+    try {
+      const data = await Category.addCategory(req.body);
+      return res.json(data?.rows ?? []);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  public static async updateCategory(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
+    try {
+      const data = await Category.updateCategory(req.body);
+      return res.json(data?.rows ?? []);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  public static async deleteCategory(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
+    try {
+      const data = await Category.deleteCategory(req.params as any);
+      return res.json(data?.rows ?? []);
+    } catch (e) {
+      console.log(e);
+    }
+  }
 }
 
 export default CategoryController;
