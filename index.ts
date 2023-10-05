@@ -15,6 +15,7 @@ app.use(
       process.env.CORS_ORIGIN as string,
       process.env.CORS_ORIGIN2 as string,
       process.env.CORS_ORIGIN3 as string,
+      process.env.CORS_ORIGIN4 as string,
     ],
     optionsSuccessStatus: 200,
   })
