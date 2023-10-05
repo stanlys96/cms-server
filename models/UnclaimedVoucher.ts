@@ -21,7 +21,7 @@ class UnclaimedVoucher {
   public static async getUnclaimedVouchers() {
     try {
       const data = await pool.query(
-        "SELECT u.id, u.username, u.voucher_code, u.wheel_outcome_id, w.name FROM unclaimed_vouchers u JOIN wheel_outcomes w ON u.wheel_outcome_id = w.id ORDER BY u.id;"
+        "SELECT u.id, u.username, u.voucher_code, u.wheel_outcome_id, w.name, u.created_at FROM unclaimed_vouchers u JOIN wheel_outcomes w ON u.wheel_outcome_id = w.id ORDER BY u.id;"
       );
       console.log(data.rows);
       return data;
