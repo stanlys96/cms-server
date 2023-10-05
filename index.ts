@@ -1,4 +1,4 @@
-import express, { Express, Request, Response, Application } from "express";
+import express, { Request, Application } from "express";
 import dotenv from "dotenv";
 import router from "./routes";
 import cors from "cors";
@@ -11,12 +11,16 @@ const port = process.env.PORT || 8000;
 
 app.use(
   cors<Request>({
-    origin: process.env.CORS_ORIGIN,
+    origin: [
+      process.env.CORS_ORIGIN as string,
+      process.env.CORS_ORIGIN2 as string,
+    ],
     optionsSuccessStatus: 200,
   })
 );
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
 app.use(router);
 
 app.listen(port, () => {

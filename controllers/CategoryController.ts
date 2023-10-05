@@ -15,6 +15,20 @@ class CategoryController {
     }
   }
 
+  public static async getCategoriesWithArticles(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
+    try {
+      console.log(req.params);
+      const data = await Category.getCategoriesWithArticles(req.params as any);
+      return res.json(data?.rows ?? []);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   public static async addCategory(
     req: Request,
     res: Response,

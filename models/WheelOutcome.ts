@@ -28,7 +28,7 @@ class WheelOutcome {
   public static async addWheelOutcome({ name, order }: InsertProps) {
     try {
       const data = await pool.query(
-        "INSERT INTO wheel_outcomes (name, order) VALUES($1, $2) RETURNING *;",
+        `INSERT INTO wheel_outcomes (name, "order") VALUES($1, $2) RETURNING *;`,
         [name, order]
       );
       return data;
@@ -40,7 +40,7 @@ class WheelOutcome {
   public static async updateWheelOutcome({ name, order, id }: UpdateProps) {
     try {
       const data = await pool.query(
-        "UPDATE wheel_outcomes SET name = $1, order = $2 WHERE id = $3 RETURNING *;",
+        `UPDATE wheel_outcomes SET name = $1, "order" = $2 WHERE id = $3 RETURNING *;`,
         [name, order, id]
       );
       return data;

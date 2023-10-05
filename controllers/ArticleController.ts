@@ -2,6 +2,19 @@ import Article from "../models/Article";
 import { Request, Response, NextFunction } from "express";
 
 class ArticleController {
+  public static async getArticleById(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
+    try {
+      const data = await Article.getArticleById(req.params as any);
+      return res.json(data?.rows[0] ?? {});
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   public static async getArticles(
     req: Request,
     res: Response,
