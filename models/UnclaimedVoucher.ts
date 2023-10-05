@@ -29,13 +29,13 @@ class UnclaimedVoucher {
 
   public static async addUnclaimedVoucher({
     username,
-    voucher_code,
     wheel_outcome_id,
   }: InsertProps) {
     try {
+      const voucherCode = Math.random().toString(36).slice(2);
       const data = await pool.query(
         "INSERT INTO unclaimed_vouchers (username, voucher_code, wheel_outcome_id) VALUES($1, $2, $3) RETURNING *;",
-        [username, voucher_code, wheel_outcome_id]
+        [username, voucherCode, wheel_outcome_id]
       );
       return data;
     } catch (e) {
