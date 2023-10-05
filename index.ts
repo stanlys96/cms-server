@@ -9,7 +9,12 @@ dotenv.config();
 const app: Application = express();
 const port = process.env.PORT || 8000;
 
-app.use(cors<Request>);
+app.use(
+  cors<Request>({
+    origin: `http://localhost:3000`,
+    optionsSuccessStatus: 200,
+  })
+);
 app.use(router);
 
 app.listen(port, () => {
