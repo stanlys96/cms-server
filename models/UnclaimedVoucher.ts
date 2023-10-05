@@ -20,7 +20,10 @@ interface DeleteProps {
 class UnclaimedVoucher {
   public static async getUnclaimedVouchers() {
     try {
-      const data = await pool.query("SELECT * FROM unclaimed_vouchers;");
+      const data = await pool.query(
+        "SELECT u.id, u.username, u.voucher_code, u.wheel_outcome_id, w.name FROM unclaimed_vouchers u JOIN wheel_outcomes w ON u.wheel_outcome_id = w.id ORDER BY u.id;"
+      );
+      console.log(data.rows);
       return data;
     } catch (e) {
       console.log(e);

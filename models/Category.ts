@@ -18,7 +18,7 @@ interface DeleteProps {
 class Category {
   public static async getCategories() {
     try {
-      const data = await pool.query("SELECT * FROM categories;");
+      const data = await pool.query("SELECT * FROM categories ORDER BY id;");
       return data;
     } catch (e) {
       console.log(e);

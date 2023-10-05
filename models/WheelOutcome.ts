@@ -18,7 +18,9 @@ interface DeleteProps {
 class WheelOutcome {
   public static async getWheelOutcomes() {
     try {
-      const data = await pool.query("SELECT * FROM wheel_outcomes;");
+      const data = await pool.query(
+        "SELECT * FROM wheel_outcomes ORDER BY id;"
+      );
       return data;
     } catch (e) {
       console.log(e);

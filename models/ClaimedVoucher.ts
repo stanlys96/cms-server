@@ -24,7 +24,9 @@ interface DeleteProps {
 class ClaimedVoucher {
   public static async getClaimedVouchers() {
     try {
-      const data = await pool.query("SELECT * FROM claimed_vouchers;");
+      const data = await pool.query(
+        "SELECT * FROM claimed_vouchers ORDER BY id;"
+      );
       return data;
     } catch (e) {
       console.log(e);
