@@ -15,6 +15,21 @@ class ClaimedVoucherController {
     }
   }
 
+  public static async getClaimedVouchersBetweenDates(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
+    try {
+      const data = await ClaimedVoucher.getClaimedVouchersBetweenDates(
+        req.body
+      );
+      return res.json(data?.rows ?? []);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   public static async addClaimedVoucher(
     req: Request,
     res: Response,

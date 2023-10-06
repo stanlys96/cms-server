@@ -21,7 +21,27 @@ interface DeleteProps {
   id: number | string;
 }
 
+interface DatesProps {
+  start_date: string;
+  end_date: string;
+}
+
 class ClaimedVoucher {
+  public static async getClaimedVouchersBetweenDates({
+    start_date,
+    end_date,
+  }: DatesProps) {
+    try {
+      const data = await pool.query(
+        "SELECT * FROM claimed_vouchers WHERE claimed_at BETWEEN $1 AND $2;",
+        [start_date, end_date]
+      );
+      return data;
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   public static async getClaimedVouchers() {
     try {
       const data = await pool.query(
