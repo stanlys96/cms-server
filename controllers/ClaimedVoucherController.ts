@@ -72,6 +72,19 @@ class ClaimedVoucherController {
       console.log(e);
     }
   }
+
+  public static async deleteMultipleClaimedVouchers(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
+    try {
+      const data = await ClaimedVoucher.deleteMultipleClaimedVouchers(req.body);
+      return res.json(data?.rows ?? []);
+    } catch (e) {
+      console.log(e);
+    }
+  }
 }
 
 export default ClaimedVoucherController;

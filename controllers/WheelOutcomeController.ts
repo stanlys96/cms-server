@@ -53,6 +53,19 @@ class WheelOutcomeController {
       console.log(e);
     }
   }
+
+  public static async deleteMultipleWheelOutcomes(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
+    try {
+      const data = await WheelOutcome.deleteMultipleWheelOutcomes(req.body);
+      return res.json(data?.rows ?? []);
+    } catch (e) {
+      console.log(e);
+    }
+  }
 }
 
 export default WheelOutcomeController;

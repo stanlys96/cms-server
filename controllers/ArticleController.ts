@@ -66,6 +66,19 @@ class ArticleController {
       console.log(e);
     }
   }
+
+  public static async deleteMultipleArticles(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
+    try {
+      const data = await Article.deleteMultipleArticles(req.body);
+      return res.json(data?.rows ?? []);
+    } catch (e) {
+      console.log(e);
+    }
+  }
 }
 
 export default ArticleController;

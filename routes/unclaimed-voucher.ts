@@ -17,5 +17,9 @@ router.delete(
   "/deleteUnclaimedVoucher/:id",
   UnclaimedVoucherController.deleteUnclaimedVoucher
 );
+router.delete(
+  "/deleteMultiple",
+  UnclaimedVoucherController.deleteMultipleUnclaimedVouchers
+);
 
 export default router;

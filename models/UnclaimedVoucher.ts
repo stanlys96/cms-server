@@ -74,6 +74,22 @@ class UnclaimedVoucher {
       console.log(e);
     }
   }
+
+  public static async deleteMultipleUnclaimedVouchers(theData: any) {
+    try {
+      const result = [];
+      for (let i = 0; i < theData.length; i++) {
+        result.push(`$${i + 1}`);
+      }
+      const data = await pool.query(
+        `DELETE FROM unclaimed_vouchers WHERE id IN (${result.join(", ")});`,
+        theData
+      );
+      return data;
+    } catch (e) {
+      console.log(e);
+    }
+  }
 }
 
 export default UnclaimedVoucher;

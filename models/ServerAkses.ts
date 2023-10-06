@@ -58,6 +58,22 @@ class ServerAkses {
       console.log(e);
     }
   }
+
+  public static async deleteMultipleServerAkses(theData: any) {
+    try {
+      const result = [];
+      for (let i = 0; i < theData.length; i++) {
+        result.push(`$${i + 1}`);
+      }
+      const data = await pool.query(
+        `DELETE FROM server_akses WHERE id IN (${result.join(", ")});`,
+        theData
+      );
+      return data;
+    } catch (e) {
+      console.log(e);
+    }
+  }
 }
 
 export default ServerAkses;

@@ -14,5 +14,9 @@ router.delete(
   "/deleteWheelOutcome/:id",
   WheelOutcomeController.deleteWheelOutcome
 );
+router.delete(
+  "/deleteMultiple",
+  WheelOutcomeController.deleteMultipleWheelOutcomes
+);
 
 export default router;

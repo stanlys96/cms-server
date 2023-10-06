@@ -11,5 +11,9 @@ router.delete(
   "/deleteServerAkses/:id",
   ServerAksesController.deleteServerAkses
 );
+router.delete(
+  "/deleteMultiple",
+  ServerAksesController.deleteMultipleServerAkses
+);
 
 export default router;

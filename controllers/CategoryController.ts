@@ -67,6 +67,19 @@ class CategoryController {
       console.log(e);
     }
   }
+
+  public static async deleteMultipleCategories(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
+    try {
+      const data = await Category.deleteMultipleCategories(req.body);
+      return res.json(data?.rows ?? []);
+    } catch (e) {
+      console.log(e);
+    }
+  }
 }
 
 export default CategoryController;

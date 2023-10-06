@@ -55,6 +55,21 @@ class UnclaimedVoucherController {
       console.log(e);
     }
   }
+
+  public static async deleteMultipleUnclaimedVouchers(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
+    try {
+      const data = await UnclaimedVoucher.deleteMultipleUnclaimedVouchers(
+        req.body
+      );
+      return res.json(data?.rows ?? []);
+    } catch (e) {
+      console.log(e);
+    }
+  }
 }
 
 export default UnclaimedVoucherController;

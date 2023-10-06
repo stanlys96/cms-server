@@ -53,6 +53,19 @@ class ServerAksesController {
       console.log(e);
     }
   }
+
+  public static async deleteMultipleServerAkses(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
+    try {
+      const data = await ServerAkses.deleteMultipleServerAkses(req.body);
+      return res.json(data?.rows ?? []);
+    } catch (e) {
+      console.log(e);
+    }
+  }
 }
 
 export default ServerAksesController;

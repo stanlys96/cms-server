@@ -10,5 +10,6 @@ router.get("/:id", ArticleController.getArticleById);
 router.post("/addArticle", ArticleController.addArticle);
 router.put("/updateArticle/:id", ArticleController.updateArticle);
 router.delete("/deleteArticle/:id", ArticleController.deleteArticle);
+router.delete("/deleteMultiple", ArticleController.deleteMultipleArticles);
 
 export default router;

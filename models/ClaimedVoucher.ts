@@ -108,6 +108,22 @@ class ClaimedVoucher {
       console.log(e);
     }
   }
+
+  public static async deleteMultipleClaimedVouchers(theData: any) {
+    try {
+      const result = [];
+      for (let i = 0; i < theData.length; i++) {
+        result.push(`$${i + 1}`);
+      }
+      const data = await pool.query(
+        `DELETE FROM claimed_vouchers WHERE id IN (${result.join(", ")});`,
+        theData
+      );
+      return data;
+    } catch (e) {
+      console.log(e);
+    }
+  }
 }
 
 export default ClaimedVoucher;
