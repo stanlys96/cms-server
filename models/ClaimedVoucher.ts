@@ -45,7 +45,7 @@ class ClaimedVoucher {
   public static async getClaimedVouchers() {
     try {
       const data = await pool.query(
-        "SELECT * FROM claimed_vouchers ORDER BY id;"
+        "SELECT id, username, voucher_code, claimed_at::timestamp AT TIME ZONE 'UTC+7' as claimed_at, voucher_created_at::timestamp AT TIME ZONE 'UTC+7' as voucher_created_at, wheel_outcome FROM claimed_vouchers ORDER BY id;"
       );
       return data;
     } catch (e) {
