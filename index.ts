@@ -17,7 +17,9 @@ app.use(
       process.env.CORS_ORIGIN3 as string,
       process.env.CORS_ORIGIN4 as string,
       process.env.CORS_ORIGIN5 as string,
+      process.env.CORS_ORIGIN6 as string,
       "http://localhost:3000",
+      "http://127.0.0.1:5500",
     ],
     optionsSuccessStatus: 200,
   })
