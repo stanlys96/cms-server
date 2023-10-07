@@ -6,6 +6,7 @@ import ArticleController from "../controllers/ArticleController";
 const router = Router();
 
 router.get("/", ArticleController.getArticles);
+router.get("/paginate", ArticleController.getArticlesPaginate);
 router.get("/:id", ArticleController.getArticleById);
 router.post("/addArticle", ArticleController.addArticle);
 router.put("/updateArticle/:id", ArticleController.updateArticle);

@@ -28,6 +28,32 @@ class ArticleController {
     }
   }
 
+  public static async getArticlesPaginate(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
+    try {
+      const data = await Article.getArticles();
+      const articles = data?.rows ?? [];
+      const pageCount = Math.ceil(articles.length / 6);
+      let page: any = parseInt(req.query.page as any);
+      if (!page) {
+        page = 1;
+      }
+      if (page > pageCount) {
+        page = pageCount;
+      }
+      return res.json({
+        page: page,
+        pageCount: pageCount,
+        data: articles.slice(page * 6 - 6, page * 6),
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   public static async addArticle(
     req: Request,
     res: Response,
