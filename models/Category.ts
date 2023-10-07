@@ -27,7 +27,6 @@ class Category {
 
   public static async getCategoriesWithArticles({ id }: DeleteProps) {
     try {
-      console.log(id);
       const data = await pool.query(
         "SELECT * FROM articles WHERE category_id = $1",
         [id]

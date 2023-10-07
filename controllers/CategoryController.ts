@@ -21,9 +21,21 @@ class CategoryController {
     next: NextFunction
   ) {
     try {
-      console.log(req.params);
       const data = await Category.getCategoriesWithArticles(req.params as any);
-      return res.json(data?.rows ?? []);
+      const categories = data?.rows ?? [];
+      const pageCount = Math.ceil(categories.length / 6);
+      let page: any = parseInt(req.query.page as any);
+      if (!page) {
+        page = 1;
+      }
+      if (page > pageCount) {
+        page = pageCount;
+      }
+      return res.json({
+        page: page,
+        pageCount: pageCount,
+        data: categories.slice(page * 6 - 6, page * 6),
+      });
     } catch (e) {
       console.log(e);
     }
