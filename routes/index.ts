@@ -6,6 +6,7 @@ import serverAksesRoutes from "./server-akses";
 import unclaimedVoucherRoutes from "./unclaimed-voucher";
 import wheelOutcomeRoutes from "./wheel-outcome";
 import userRoutes from "./user";
+import volatilityRoutes from "./volatility";
 
 const router = express.Router();
 
@@ -16,5 +17,6 @@ router.use("/server-akses", serverAksesRoutes);
 router.use("/unclaimed-vouchers", unclaimedVoucherRoutes);
 router.use("/wheel-outcomes", wheelOutcomeRoutes);
 router.use("/users", userRoutes);
+router.use("/volatility", volatilityRoutes);
 
 export default router;
