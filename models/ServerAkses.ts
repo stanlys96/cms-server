@@ -25,11 +25,21 @@ class ServerAkses {
 
   public static async addServerAkses({ username }: InsertProps) {
     try {
-      const data = await pool.query(
-        "INSERT INTO server_akses (username) VALUES($1) RETURNING *;",
+      const dataExist = await pool.query(
+        "SELECT * FROM server_akses WHERE username = $1",
         [username]
       );
-      return data;
+      if (dataExist.rowCount > 0) {
+        return {
+          rows: "Data already exist!",
+        };
+      } else {
+        const data = await pool.query(
+          "INSERT INTO server_akses (username) VALUES($1) RETURNING *;",
+          [username]
+        );
+        return data;
+      }
     } catch (e) {
       console.log(e);
     }
@@ -37,11 +47,21 @@ class ServerAkses {
 
   public static async updateServerAkses({ username, id }: UpdateProps) {
     try {
-      const data = await pool.query(
-        "UPDATE server_akses SET username = $1 WHERE id = $2 RETURNING *;",
-        [username, id]
+      const dataExist = await pool.query(
+        "SELECT * FROM server_akses WHERE username = $1",
+        [username]
       );
-      return data;
+      if (dataExist.rowCount > 0) {
+        return {
+          rows: "Data already exist!",
+        };
+      } else {
+        const data = await pool.query(
+          "UPDATE server_akses SET username = $1 WHERE id = $2 RETURNING *;",
+          [username, id]
+        );
+        return data;
+      }
     } catch (e) {
       console.log(e);
     }
