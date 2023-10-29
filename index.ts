@@ -20,6 +20,7 @@ app.use(
       process.env.CORS_ORIGIN6 as string,
       process.env.CORS_ORIGIN7 as string,
       process.env.CORS_ORIGIN8 as string,
+      process.env.CORS_ORIGIN9 as string,
       "http://localhost:3000",
       "http://127.0.0.1:5500",
     ],
