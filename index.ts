@@ -21,14 +21,25 @@ app.use(
       process.env.CORS_ORIGIN7 as string,
       process.env.CORS_ORIGIN8 as string,
       process.env.CORS_ORIGIN9 as string,
-      "http://localhost:3000",
-      "http://127.0.0.1:5500",
     ],
     optionsSuccessStatus: 200,
   })
 );
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
+// app.use((req, res, next) => {
+//   console.log(req.headers);
+//   if (req.headers.authorization) {
+//     if (req.headers.authorization !== process.env.BEARER_TOKEN) {
+//       res.status(401).json({ message: "Unauthorized" });
+//     } else {
+//       next();
+//     }
+//   } else {
+//     res.status(401).json({ message: "Unauthorized" });
+//   }
+// });
 
 app.use(router);
 
